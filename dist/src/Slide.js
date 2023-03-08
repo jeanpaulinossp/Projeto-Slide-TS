@@ -1,4 +1,4 @@
-import Timeout from "./Timeout.js";
+import Timeout from "../components/Timeout.js";
 export default class Slide {
     container;
     slides;
@@ -6,13 +6,11 @@ export default class Slide {
     time;
     index;
     slide;
-    timeout;
     constructor(container, slides, controls, time = 5000) {
         this.container = container;
         this.slides = slides;
         this.controls = controls;
         this.time = time;
-        this.timeout = null;
         this.index = 0;
         this.slide = this.slides[this.index];
         this.init();
@@ -28,8 +26,8 @@ export default class Slide {
         this.auto(this.time);
     }
     auto(time) {
-        this.timeout?.clear();
-        this.timeout = new Timeout(() => this.next(), time);
+        console.log(new Timeout(() => this.next(), time));
+        console.log("kk");
     }
     prev() {
         const prev = this.index > 0 ? this.index - 1 : this.slides.length - 1;
